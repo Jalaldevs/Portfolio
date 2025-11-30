@@ -1,3 +1,7 @@
+<?php 
+    include("database.php");
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -127,7 +131,7 @@
         </section>
         <section id="contact" class="contact_section">
             <h2 class="contact_title">Contact Me</h2>
-            <form action="/index.php" method="post" id="form" novalidate>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="form" novalidate>
                 <h2>Let’s Talk!!</h2> <span id="js-validations-errors"></span>
                 <div class="form-grid">
                     <div class="form-name">
@@ -163,10 +167,10 @@
                     </label>
                 </div>
                 <div class="form-checkbox">
-                    <p><input id="checkbox" name="CheckBox" type="checkbox">I agree to the <a href="#"> Privacy Policy.</a></p>
+                    <p><input id="checkbox" name="CheckBox" value="agreed" type="checkbox">I agree to the <a href="#"> Privacy Policy.</a></p>
                 </div>
                 <div class="form-submit">
-                    <button>Send Message</button>
+                    <button type="submit">Send Message</button>
                 </div> 
             </form>
         </section>
@@ -202,3 +206,10 @@
     </footer>
 </body>
 </html>
+<?php 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        
+
+    }
+?>
