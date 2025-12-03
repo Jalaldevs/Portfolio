@@ -1,5 +1,29 @@
 <?php 
     include("database.php");
+    include("validations.php");
+
+    $errors = [];
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $errors['name'] = validateName($_POST['Name'] ?? null);
+        $errors['email'] = validateEmail($_POST['Email'] ?? null);
+        $errors['companyName'] = validateCompanyName($_POST['CompanyName'] ?? null);
+        $errors['projectType'] = validateProjectType($_POST['ProjectType'] ?? null);
+        $errors['message'] = validateMessage($_POST['Message'] ?? null);
+        $errors['checkBox'] = validateCheckbox($_POST['CheckBox'] ?? null);
+
+        if (isblank($errors)) {
+            $name = filter_input(INPUT_POST, 'Name', FILTER_SANITIZE_SPECIAL_CHARS);
+            $email = filter_input(INPUT_POST, 'Email', FILTER_SANITIZE_EMAIL);
+            $companyName = filter_input(INPUT_POST, 'CompanyName', FILTER_SANITIZE_SPECIAL_CHARS);
+            $message = filter_input(INPUT_POST, 'Message', FILTER_SANITIZE_SPECIAL_CHARS);
+            $projectType = $_POST["ProjectType"];
+            
+            $sql = "INSERT INTO contactForm (Name, Email, CompanyName, ProjectType, Message) VALUES ('$name', '$email', '$companyName', '$projectType', '$message')";
+            mysqli_query($conn, $sql);
+        }
+    }
+
 ?>
 
 <html lang="en">
@@ -131,27 +155,30 @@
         </section>
         <section id="contact" class="contact_section">
             <h2 class="contact_title">Contact Me</h2>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" id="form" novalidate>
-                <h2>Let’s Talk!!</h2> <span id="js-validations-errors"></span>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>#contact" method="post" id="form" novalidate>
+                <h2>Let’s Talk!!</h2>
                 <div class="form-grid">
                     <div class="form-name">
-                        <label>Full Name
-                            <input id="fullName" name="FullName" placeholder="Full Name" type="text" required>
+                        <label>Name*
+                            <input id="name" name="Name" placeholder="Name" type="text" style="<?= isset($errors['name']) ? 'border: 1px solid #a03737ff' : '' ?>" required>
                         </label>
+                        <div style="color: #a03737ff;" class="error-message"><?= isset($errors['name']) ? $errors['name'] : '' ?></div>
+                    </div>
+                    <div class="form-email">
+                        <label>Email Address*
+                            <input id="email" name="Email" placeholder="Email Address" type="email" style="<?= isset($errors['email']) ? 'border: 1px solid #a03737ff' : '' ?>" required>
+                        </label>
+                        <div style="color: #a03737ff;" class="error-message"><?= isset($errors['email']) ? $errors['email'] : '' ?></div>
                     </div>
                     <div class="form-company">
                         <label>Company Name
-                            <input id="companyName" name="CompanyName" placeholder="Company Name" type="text">
+                            <input id="companyName" name="CompanyName" placeholder="Company Name" style="<?= isset($errors['companyName']) ? 'border: 1px solid #a03737ff' : '' ?>" type="text">
                         </label>
-                    </div>
-                    <div class="form-email">
-                        <label>Email Address
-                            <input id="email" name="Email" placeholder="Email Address" type="email" required>
-                        </label>
+                        <div style="color: #a03737ff;" class="error-message"><?= isset($errors['companyName']) ? $errors['companyName'] : '' ?></div>
                     </div>
                     <div class="project-type">
-                        <label>Project Type
-                            <select id="projectType" name="ProjectType" required>
+                        <label>Project Type*
+                            <select style="<?= isset($errors['projectType']) ? 'border: 1px solid #b03737ff' : '' ?>" id="projectType" name="ProjectType" required>
                                 <option value="" disabled selected>Select Project Type</option>
                                 <option value="Front-end">Front-end</option>
                                 <option value="Back-end">Back-end</option>
@@ -159,15 +186,23 @@
                                 <option value="Company Request">Company Request</option>
                             </select>
                         </label>
+                        <div style="color: #a03737ff;" class="error-message"><?= isset($errors['projectType']) ? $errors['projectType'] : '' ?></div>
                     </div>
                 </div>   
                 <div class="form-message">
-                    <label>Message
-                        <textarea id="message" name="Message" placeholder="Your Message" required></textarea>
+                    <label>Message*
+                        <textarea id="message" name="Message" placeholder="Your Message" style="<?= isset($errors['message']) ? 'border: 1px solid #a03737ff' : '' ?>" required></textarea>
                     </label>
+                    <div style="color: #a03737ff;" class="error-message"><?= isset($errors['message']) ? $errors['message'] : '' ?></div>
                 </div>
                 <div class="form-checkbox">
-                    <p><input id="checkbox" name="CheckBox" value="agreed" type="checkbox">I agree to the <a href="#"> Privacy Policy.</a></p>
+                    <p>
+                        <input id="checkbox" name="CheckBox" value="agreed" type="checkbox">I agree to the
+                        <a href="#"> Privacy Policy.</a>
+                        <span style="color: #aa2e2eff;" class="error-message">
+                            <?= isset($errors['checkBox']) ? $errors['checkBox'] : '' ?>
+                        </span>
+                    </p>
                 </div>
                 <div class="form-submit">
                     <button type="submit">Send Message</button>
@@ -179,7 +214,7 @@
             <div class="faq">
                 <details>
                     <summary>What services do you offer?</summary>
-                    <p>I specialize in web development using technologies like HTML, CSS, JavaScript, and Spring Boot.</p>
+                    <p>I specialize in web development using technologies like HTML, CSS, JavaScript, and PHP.</p>
                 </details>
                 <details>
                     <summary>How can I request a project quote?</summary>
@@ -206,10 +241,3 @@
     </footer>
 </body>
 </html>
-<?php 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-        
-
-    }
-?>
