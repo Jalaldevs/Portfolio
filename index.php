@@ -160,19 +160,19 @@
                 <div class="form-grid">
                     <div class="form-name">
                         <label>Name*
-                            <input id="name" name="Name" placeholder="Name" type="text" style="<?= isset($errors['name']) ? 'border: 1px solid #a03737ff' : '' ?>" required>
+                            <input value="<?= htmlspecialchars($_POST['Name'] ?? '') ?>"  id="name" name="Name" placeholder="Name" type="text" style="<?= isset($errors['name']) ? 'border: 1px solid #a03737ff' : '' ?>" required>
                         </label>
                         <div style="color: #a03737ff;" class="error-message"><?= isset($errors['name']) ? $errors['name'] : '' ?></div>
                     </div>
                     <div class="form-email">
                         <label>Email Address*
-                            <input id="email" name="Email" placeholder="Email Address" type="email" style="<?= isset($errors['email']) ? 'border: 1px solid #a03737ff' : '' ?>" required>
+                            <input value="<?= htmlspecialchars($_POST['Email'] ?? '') ?>"  id="email" name="Email" placeholder="Email Address" type="email" style="<?= isset($errors['email']) ? 'border: 1px solid #a03737ff' : '' ?>" required>
                         </label>
                         <div style="color: #a03737ff;" class="error-message"><?= isset($errors['email']) ? $errors['email'] : '' ?></div>
                     </div>
                     <div class="form-company">
                         <label>Company Name
-                            <input id="companyName" name="CompanyName" placeholder="Company Name" style="<?= isset($errors['companyName']) ? 'border: 1px solid #a03737ff' : '' ?>" type="text">
+                            <input value="<?= htmlspecialchars($_POST['CompanyName'] ?? '') ?>"  id="companyName" name="CompanyName" placeholder="Company Name" style="<?= isset($errors['companyName']) ? 'border: 1px solid #a03737ff' : '' ?>" type="text">
                         </label>
                         <div style="color: #a03737ff;" class="error-message"><?= isset($errors['companyName']) ? $errors['companyName'] : '' ?></div>
                     </div>
@@ -191,7 +191,7 @@
                 </div>   
                 <div class="form-message">
                     <label>Message*
-                        <textarea id="message" name="Message" placeholder="Your Message" style="<?= isset($errors['message']) ? 'border: 1px solid #a03737ff' : '' ?>" required></textarea>
+                        <textarea id="message" name="Message" placeholder="Your Message" style="<?= isset($errors['message']) ? 'border: 1px solid #a03737ff' : '' ?>" required><?= htmlspecialchars($_POST['Message'] ?? '') ?></textarea>
                     </label>
                     <div style="color: #a03737ff;" class="error-message"><?= isset($errors['message']) ? $errors['message'] : '' ?></div>
                 </div>
