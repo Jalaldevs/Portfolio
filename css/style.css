@@ -29,6 +29,7 @@ header{
 }
 .logo_image{
     width: 200px;
+    z-index: 2;
 }
 nav{
     display: block;
@@ -58,24 +59,7 @@ nav{
     display: none !important;
 }
 /* Header ends */
-/* Hero section starts */
-
-/* .pointer{
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    width: 2rem;
-    aspect-ratio: 1;
-    background-color: rgba(255,255,255,0.9);
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 50%;
-    pointer-events: none;
-    correct var() usage (no space after var) and provide fallback
-    transform: translate3d(var(--mouseX, 0), var(--mouseY, 0), 0) translate(-50%, -50%);
-}  */
-
-
+/* Hero starts */
 .hero_section{
     height: 80dvh;
     display: flex;
@@ -427,8 +411,8 @@ footer {
         grid-template-columns: 1fr;
     }
     form{
-        width: 95%;
-        padding: 4rem;
+        width: 100%;
+        padding: 3rem;
     }
     .nav_ul{
         display: none;
@@ -485,4 +469,10 @@ footer {
 }
 .js-navLinks-menu-opened{
     font-size: 2rem;
+}
+.js-input-valid {
+    border: 1px solid limegreen;
+}
+.php-input-error {
+    border: 1px solid #a03737ff;
 }

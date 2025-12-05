@@ -1,6 +1,6 @@
 <?php 
-    include("database.php");
-    include("validations.php");
+    include __DIR__ . "/includes/database.php";
+    include __DIR__ . "/includes/validations.php";
 
     $errors = [];
 
@@ -31,16 +31,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script th:src="@{/js/script.js}" src="js/script.js" defer></script>
-    <link rel="icon" type="image/png" th:href="@{/images/jalaldevs_favicon.png}" href="images/jalaldevs_favicon.png">
+    <script src="js/script.js" defer></script>
+    <link rel="icon" type="image/png" href="images/jalaldevs_favicon.png">
 </head>
 <body>
     <div class="wrapper">
         <span class="pointer" aria-hidden="true"></span>
         <header>
-            <img class="logo_image" th:src="@{/images/jalaldevs_logo.png}" src="images/jalaldevs_logo.png" alt="My Logo">
+            <img class="logo_image" src="images/jalaldevs_logo.png" alt="My Logo">
             <span class="hamburger-menu js-hamburger-menu"><i class="fa-solid fa-bars"></i></span>
             <nav class="nav js-nav">
                 <ul class="nav_ul js-nav-ul">
@@ -77,7 +77,7 @@
                 <div class="project_card">
                     <a href="#">
                         <div class="project_media project-video">
-                            <video autoplay plasinline loop muted th:src="@{/videos/hero_aquacraft_portfolio.mp4}" src="videos/hero_aquacraft_portfolio.mp4"></video>
+                            <video autoplay plasinline loop muted src="videos/hero_aquacraft_portfolio.mp4"></video>
                         </div>
                     </a>
                     <div class="project_info">
@@ -91,7 +91,7 @@
                 <div class="project_card">
                     <a href="#">
                         <div class="project_media project-image">
-                            <img th:src="@{/images/hero_voltix_for_portfolio.png}" src="images/hero_voltix_for_portfolio.png" alt="">
+                            <img src="images/hero_voltix_for_portfolio.png" alt="">
                         </div>
                     </a>
                     <div class="project_info">
@@ -109,7 +109,7 @@
             <div class="about_wrapper">
                 <div class="about_grid">
                     <div class="about_image">
-                        <img th:src="@{/images/carnet.jpg}" src="images/carnet.jpg" alt="My Picture">
+                        <img src="images/carnet.jpg" alt="My Picture">
                     </div>
                     <div class="about_info info-top">
                         <div class="info_wrapper">
@@ -124,7 +124,7 @@
                     </div>
                     <div class="about_github js-about-github-link">
                         <div class="github-logo">
-                            <img th:src="@{/images/github.svg}" src="images/github.svg" alt="github-logo Logo">
+                            <img src="images/github.svg" alt="github-logo Logo">
                         </div>
                         <div class="My-github-link">
                             <a href="#">All Projects</a>
@@ -143,7 +143,7 @@
                         <a href="#" class="social-icon" aria-label="YouTube">
                             <i class="fa-brands fa-youtube"></i>
                         </a>
-                        <a href="https://www.tiktok.com/@yourprofile" class="social-icon tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.tiktok.com/@jalaldevs" class="social-icon tiktok" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
                             <i class="fa-brands fa-tiktok"></i>
                         </a>
                         <a href="#" class="social-icon" aria-label="LinkedIn">
@@ -160,25 +160,25 @@
                 <div class="form-grid">
                     <div class="form-name">
                         <label>Name*
-                            <input value="<?= htmlspecialchars($_POST['Name'] ?? '') ?>"  id="name" name="Name" placeholder="Name" type="text" style="<?= isset($errors['name']) ? 'border: 1px solid #a03737ff' : '' ?>" required>
+                            <input class="js-form-element <?= isset($errors['name']) ? 'php-input-error' : '' ?>" value="<?= htmlspecialchars($_POST['Name'] ?? '') ?>"  id="name" name="Name" placeholder="Name" type="text" required>
                         </label>
-                        <div style="color: #a03737ff;" class="error-message"><?= isset($errors['name']) ? $errors['name'] : '' ?></div>
+                        <div style="color: #a03737ff;" class="error-message js-name-error-message"><?= isset($errors['name']) ? $errors['name'] : '' ?></div>
                     </div>
                     <div class="form-email">
                         <label>Email Address*
-                            <input value="<?= htmlspecialchars($_POST['Email'] ?? '') ?>"  id="email" name="Email" placeholder="Email Address" type="email" style="<?= isset($errors['email']) ? 'border: 1px solid #a03737ff' : '' ?>" required>
+                            <input class="js-form-element <?= isset($errors['email']) ? 'php-input-error' : '' ?>" value="<?= htmlspecialchars($_POST['Email'] ?? '') ?>"  id="email" name="Email" placeholder="Email Address" type="email" required>
                         </label>
-                        <div style="color: #a03737ff;" class="error-message"><?= isset($errors['email']) ? $errors['email'] : '' ?></div>
+                        <div style="color: #a03737ff;" class="error-message js-email-error-message"><?= isset($errors['email']) ? $errors['email'] : '' ?></div>
                     </div>
                     <div class="form-company">
                         <label>Company Name
-                            <input value="<?= htmlspecialchars($_POST['CompanyName'] ?? '') ?>"  id="companyName" name="CompanyName" placeholder="Company Name" style="<?= isset($errors['companyName']) ? 'border: 1px solid #a03737ff' : '' ?>" type="text">
+                            <input class="<?= isset($errors['companyName']) ? 'php-input-error' : '' ?>" value="<?= htmlspecialchars($_POST['CompanyName'] ?? '') ?>"  id="companyName" name="CompanyName" placeholder="Company Name" type="text">
                         </label>
-                        <div style="color: #a03737ff;" class="error-message"><?= isset($errors['companyName']) ? $errors['companyName'] : '' ?></div>
+                        <div style="color: #a03737ff;" class="error-message js-companyName-error-message"><?= isset($errors['companyName']) ? $errors['companyName'] : '' ?></div>
                     </div>
                     <div class="project-type">
                         <label>Project Type*
-                            <select style="<?= isset($errors['projectType']) ? 'border: 1px solid #b03737ff' : '' ?>" id="projectType" name="ProjectType" required>
+                            <select class="js-form-element <?= isset($errors['projectType']) ? 'php-input-error' : '' ?>" style="<?= isset($errors['projectType']) ? 'border: 1px solid #b03737ff' : '' ?>" id="projectType" name="ProjectType" required>
                                 <option value="" disabled selected>Select Project Type</option>
                                 <option value="Front-end">Front-end</option>
                                 <option value="Back-end">Back-end</option>
@@ -186,20 +186,20 @@
                                 <option value="Company Request">Company Request</option>
                             </select>
                         </label>
-                        <div style="color: #a03737ff;" class="error-message"><?= isset($errors['projectType']) ? $errors['projectType'] : '' ?></div>
+                        <div style="color: #a03737ff;" class="error-message js-projectType-error-message"><?= isset($errors['projectType']) ? $errors['projectType'] : '' ?></div>
                     </div>
                 </div>   
                 <div class="form-message">
                     <label>Message*
-                        <textarea id="message" name="Message" placeholder="Your Message" style="<?= isset($errors['message']) ? 'border: 1px solid #a03737ff' : '' ?>" required><?= htmlspecialchars($_POST['Message'] ?? '') ?></textarea>
+                        <textarea class="js-form-element <?= isset($errors['message']) ? 'php-input-error' : '' ?>" id="message" name="Message" placeholder="Your Message" style="<?= isset($errors['message']) ? 'border: 1px solid #a03737ff' : '' ?>" required><?= htmlspecialchars($_POST['Message'] ?? '') ?></textarea>
                     </label>
-                    <div style="color: #a03737ff;" class="error-message"><?= isset($errors['message']) ? $errors['message'] : '' ?></div>
+                    <div style="color: #a03737ff;" class="error-message js-message-error-message"><?= isset($errors['message']) ? $errors['message'] : '' ?></div>
                 </div>
                 <div class="form-checkbox">
                     <p>
                         <input id="checkbox" name="CheckBox" value="agreed" type="checkbox">I agree to the
                         <a href="#"> Privacy Policy.</a>
-                        <span style="color: #aa2e2eff;" class="error-message">
+                        <span  style="color: #aa2e2eff;" class="error-message js-checkBox-error-message">
                             <?= isset($errors['checkBox']) ? $errors['checkBox'] : '' ?>
                         </span>
                     </p>
@@ -222,7 +222,7 @@
                 </details>
                 <details>
                     <summary>Do you work with databases?</summary>
-                    <p>Yes! I work with both SQL and NoSQL databases, including MySQL, PostgreSQL, and MongoDB, depending on the project requirements.</p>
+                    <p>Yes! I work with both SQL databases, including MySQL and PostgreSQL depending on the project requirements.</p>
                 </details>
                 <details>
                     <summary>Can you handle both small and large projects?</summary>
@@ -236,7 +236,7 @@
         </section>
     </main>
     <footer>
-        <img class="logo_image" th:src="@{/images/jalaldevs_logo.png}" src="images/jalaldevs_logo.png" alt="My logo">
+        <img class="logo_image" src="images/jalaldevs_logo.png" alt="My logo">
         <p>Coded by JalalDevs</p>
     </footer>
 </body>
