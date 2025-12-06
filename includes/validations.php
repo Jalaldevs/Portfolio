@@ -7,13 +7,6 @@
         }
         return null;
     }
-    function validateCompanyName($companyName) {
-        $companyName = trim((string)$companyName);
-        if ($companyName !== '' && strlen($companyName) > 30) {
-            return "Less than 30 chars.";
-        }
-        return null;
-    }
     function validateEmail($email) {
         $email = trim((string)$email);
         if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {

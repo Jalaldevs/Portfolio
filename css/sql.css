@@ -21,17 +21,25 @@ header {
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--box-shadow);
+    position: relative;
 }
-.nav-list{
+.nav_li{
     display: flex;
     gap: 2rem;
 }
-.nav-link{ 
+.nav_link{ 
     gap: 5px;
     color: var(--black);
     font-weight: 600;
 }
 #ER {
+    display: none;
+}
+.hamburger-menu{
+    position: absolute;
+    right: 0;
+    margin-right: 2rem;
+    font-size: 1.8rem;
     display: none;
 }
 /* Main starts */
@@ -64,4 +72,23 @@ footer{
     justify-content: space-around;
     align-items: center;
     font-weight: 600;
+}
+@media ( width < 1055px ) {
+    .hamburger-menu {
+        display: block;
+    }
+    .nav-li {
+        display: none;
+    }
+}
+/* Script styling */
+.js-nav-menu-opened{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100dvh;
+    background-color: var(--white-color);
+    margin: 0;
+    z-index: 1;
 }

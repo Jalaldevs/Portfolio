@@ -150,7 +150,18 @@ nav{
     width: 100%;
     display: flex;
     flex-direction: column;
-    box-shadow: var(--box-shadow);
+}
+.tech-stack {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+.tech-icons {
+    display: flex;
+    gap: 0.6rem;
+}
+.info-icon {
+    margin-left: auto;
 }
 .project-image, .project-video {
     width: 100%;
@@ -169,7 +180,7 @@ nav{
     width: 100%;
     font-weight: 500;
     padding: 10px 0;
-    box-shadow: 6px 12px 40px 0 var(--gray-color);;
+    box-shadow: 6px 12px 40px 0 var(--gray-color);
 }
 .project_links{
     display: flex;
@@ -394,6 +405,9 @@ footer {
         grid-template-columns: 1fr;
         min-width: 0;
     }
+    form {
+        width: 80%;
+    }
     .info-top{
         grid-column: 2/6;
         width: 100%;
@@ -405,7 +419,7 @@ footer {
         grid-column: 3/6;
     }
 }
-@media ( width <= 850px ){
+@media ( width <= 800px ){
     .projects_wrapper{
         width: 95%;
         grid-template-columns: 1fr;
@@ -435,8 +449,8 @@ footer {
     }
 }
 /* script styling starts */
-.js-body-menu-opened{
-    overflow: hidden;
+body.js-body-state{
+    overflow: hidden !important;
 }
 .js-menu-opened{
     color: var(--black-color);
@@ -471,7 +485,7 @@ footer {
     font-size: 2rem;
 }
 .js-input-valid {
-    border: 1px solid limegreen;
+    border: 1px solid rgb(67, 80, 67);
 }
 .php-input-error {
     border: 1px solid #a03737ff;
