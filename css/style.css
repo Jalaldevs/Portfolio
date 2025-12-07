@@ -198,6 +198,9 @@ nav{
 .sql_link{
     background-color: #1ea3b2;
 }
+.download_app_link{
+    background-color: #2c3ea3;
+}
 /* Projects section ends */
 /* About section starts.*/
 .about_title{
@@ -425,7 +428,7 @@ footer {
         grid-template-columns: 1fr;
     }
     form{
-        width: 100%;
+        width: 95%;
         padding: 3rem;
     }
     .nav_ul{
