@@ -14,7 +14,7 @@ export const projects = [
     mediaType: "video",
     mediaURL: "./videos/hero_aquacraft_portfolio.mp4",
     links: [
-      "https://aquacraft.com",
+      "https://jalaldevs.github.io/AquaCraft/",
       "https://github.com/Jalaldevs/AquaCraft",
       "/pages/sql.php"
     ]
