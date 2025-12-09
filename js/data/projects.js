@@ -32,7 +32,7 @@ export const projects = [
     mediaType: "image",
     mediaURL: "./images/hero_voltix_for_portfolio.png",
     links: [
-      "https://voltix.com",
+      "https://jalaldevs.github.io/Voltix/",
       "https://github.com/Jalaldevs/Voltix",
       "/pages/sql.php"
     ]
