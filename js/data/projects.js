@@ -9,7 +9,7 @@ export const projects = [
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
     ],
     techWidth: "27",
-    infoIcon: "To Be Finished...",
+    infoIcon: "To Be Finished... <i class="fa-solid fa-circle-info"></i>",
     media: "video",
     mediaType: "video",
     mediaURL: "./videos/hero_aquacraft_portfolio.mp4",
@@ -27,7 +27,7 @@ export const projects = [
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
     ],
-    infoIcon: "To Be Finished...",
+    infoIcon: "To Be Finished... <i class="fa-solid fa-circle-info"></i>",
     media: "img",
     mediaType: "image",
     mediaURL: "./images/hero_voltix_for_portfolio.png",
